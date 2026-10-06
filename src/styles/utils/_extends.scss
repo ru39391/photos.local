@@ -1,0 +1,38 @@
+@use './mixins' as *;
+@use './breakpoints' as *;
+
+%d-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+%d-flex-nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+%d-flex-ai-center {
+  display: flex;
+  align-items: center;
+}
+
+%d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+%d-flex-centered {
+  @extend %d-flex-ai-center;
+  justify-content: center;
+}
+
+%section-title {
+  @include fs-lh(var(--font-size-xl),var(--line-height-lg));
+  font-family: var(--font-family-title);
+  font-weight: var(--fw-bold);
+
+  @media #{$breakpoint-up-md} {
+    @include fs-lh(var(--font-size-xxl),var(--line-height-xl));
+  }
+}
+

@@ -1,0 +1,72 @@
+@use './breakpoints' as *;
+@use './extends' as *;
+@use './mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  @extend %d-flex-column;
+  @include fs-lh(var(--font-size-body),1);
+  font-family: var(--font-family-body);
+  color: var(--color-basic);
+  background-color: var(--color-light-blue);
+  height: 100%;
+}
+
+.container {
+  @include px(10px);
+  @include mx(auto);
+
+  @media #{$breakpoint-up-sm} {
+    @include px(15px);
+  }
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.td-underline {
+  text-decoration: underline;
+}
+
+.img-cover {
+  @include object-fit();
+}
+
+.icon-fluid {
+  @include object-fit();
+  pointer-events: none;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.zi-2 {
+  @include zi(2);
+}
+
+.w-auto {
+  width: auto;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+
+  @media #{$breakpoint-up-sm} {
+    overflow: auto;
+  }
+}
