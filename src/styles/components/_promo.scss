@@ -1,0 +1,44 @@
+@use "../utils/helpers" as *;
+
+.promo {
+  flex-grow: 1;
+  display: grid;
+  gap: 0 32px;
+  grid-template-columns: minmax(min-content, 50%) minmax(min-content, 1fr);
+  grid-template-areas:
+    "aside wrapper";
+}
+
+.promo__aside {
+  @extend %d-flex-column;
+  @include fs-lh(var(--font-size-xxl),var(--line-height-body));
+  gap: 32px 0;
+  padding: 32px 0 0;
+  grid-area: aside;
+}
+
+.promo__wrapper {
+  @extend %d-flex-column;
+  justify-content: space-between;
+  gap: 32px 0;
+  padding: 32px 0 0;
+  grid-area: wrapper;
+}
+
+.promo__title {
+  font-size: 2em;
+  font-weight: var(--fw-xbold);
+  font-family: var(--font-family-title);
+  text-transform: uppercase;
+  margin: -16px 0 0;
+}
+
+.promo__subtitle {
+  @extend %d-flex-column;
+  @include fs-lh(var(--font-size-lg),var(--line-height-md));
+  text-transform: uppercase;
+}
+
+.promo__bg {
+
+}

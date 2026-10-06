@@ -1,0 +1,6 @@
+@use "../utils/helpers" as *;
+
+.intro {
+  @extend %d-flex-column;
+  height: 100vh;
+}

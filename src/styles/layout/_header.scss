@@ -1,0 +1,8 @@
+@use "../utils/helpers" as *;
+
+.header {
+  @extend %d-flex-ai-center;
+  @include py(32px);
+  width: 100%;
+  justify-content: space-between;
+}

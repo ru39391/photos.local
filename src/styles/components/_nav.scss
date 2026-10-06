@@ -1,0 +1,40 @@
+@use "../utils/helpers" as *;
+
+.nav {
+  @extend %d-flex-column;
+  gap: 32px 0;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.nav__link {
+  @extend %d-flex-ai-center;
+  gap: 0 16px;
+  padding: 0 0 8px;
+  color: var(--color-grey);
+  transition: all .3s ease;
+
+  &:hover {
+    color: var(--color-dark);
+  }
+}
+
+.nav__link-caption {
+  @include before;
+  letter-spacing: -1.8px;
+
+  &:hover {
+    &:before {
+      width: 100%;
+    }
+  }
+
+  &:before {
+    @include wh(0,4px);
+    top: 100%;
+    margin: 8px 0 0;
+    transition: all .3s ease .3s;
+    background-color: var(--color-dark);
+  }
+}

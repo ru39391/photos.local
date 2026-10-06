@@ -4,6 +4,10 @@
 @use 'layout/section';
 @use 'layout/header';
 @use 'layout/footer';
+@use 'components/intro';
+@use 'components/promo';
+@use 'components/nav';
+@use 'components/social';
 @use 'components/swiper';
 @use 'components/gallery';
 @import 'base/fonts';

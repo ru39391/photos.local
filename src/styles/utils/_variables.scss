@@ -1,6 +1,6 @@
 :root {
   --font-family-body: 'Noto Sans', sans-serif;
-  --font-family-title: 'Noto Sans Display Condensed', sans-serif;
+  --font-family-title: 'Artegra Sans Extended', sans-serif;
 
   --font-size-xxl: 52px;
   --font-size-xl: 34px;
@@ -16,18 +16,21 @@
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
+  --fw-xbold: 800;
 
-  --line-height-xl: 54px;
-  --line-height-lg: 36px;
-  --line-height-body: 24px;
-  --line-height-sm: 18px;
-  --line-height-xs: 16px;
+  --line-height-xxl: 2;
+  --line-height-xl: 1.8;
+  --line-height-lg: 1.6;
+  --line-height-md: 1.4;
+  --line-height-body: 1;
+  --line-height-sm: 1.2;
+  --line-height-xs: 1.1;
 
   --color-white: #ffffff;
   --color-black: #000000;
   --color-basic: #323232;
   --color-dark: #414042;
-  --color-grey: #A8C8D6;
+  --color-grey: #707070;
   --color-primary: #1B74B6;
   --color-secondary: #0072BC;
   --color-danger: #f00;

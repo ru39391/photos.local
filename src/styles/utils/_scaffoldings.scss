@@ -14,19 +14,21 @@ html {
 
 body {
   @extend %d-flex-column;
-  @include fs-lh(var(--font-size-body),1);
+  @include fs-lh(var(--font-size-md),1);
   font-family: var(--font-family-body);
+  font-weight: var(--fw-light);
   color: var(--color-basic);
-  background-color: var(--color-light-blue);
+  background-color: var(--color-white);
   height: 100%;
 }
 
 .container {
-  @include px(10px);
+  @include px(16px);
   @include mx(auto);
+  width: 100%;
 
   @media #{$breakpoint-up-sm} {
-    @include px(15px);
+    @include px(32px);
   }
 }
 
