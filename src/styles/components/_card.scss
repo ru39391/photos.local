@@ -1,10 +1,17 @@
 @use "../utils/helpers" as *;
 
 .card {
-  position: relative;
+  @include before;
   overflow: hidden;
   cursor: pointer;
   color: var(--color-white);
+
+  &:before {
+    @include pos(0);
+    @include wh(100%);
+    z-index: 1;
+    box-shadow: 0 0 110px 0 rgba(0,0,0,.75) inset;
+  }
 
   &:hover {
     .card__pic {
@@ -24,14 +31,14 @@
 }
 
 .card__pic {
-  z-index: 1;
+  z-index: 2;
   transition: all .3s ease .1s;
 }
 
 .card__bg {
   @include pos(0);
   @include wh(100%);
-  z-index: 1;
+  z-index: 2;
   background-size: 100% auto;
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -44,7 +51,7 @@
   @include pos(0,0);
   gap: 0 8px;
   padding: 24px;
-  z-index: 2;
+  z-index: 3;
   font-size: var(--font-size-lg);
   font-family: var(--font-family-secondary);
   text-transform: lowercase;
@@ -58,7 +65,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
   font-size: var(--font-size-xl);
   font-weight: var(--fw-semibold);
   font-family: var(--font-family-secondary);

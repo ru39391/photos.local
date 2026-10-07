@@ -2,12 +2,26 @@
 
 .section {
   @include py(32px);
-  height: 100vh;
-  gap: 0 32px;
+  min-height: 100vh;
+  gap: 32px;
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-areas:
     "wrapper aside";
+
+  &.section_reversed {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+      "aside wrapper";
+  }
+
+  &.section_type_cols {
+    grid-template-columns: repeat(3,1fr);
+
+    .section__aside {
+      grid-area: unset;
+    }
+  }
 }
 
 .section__wrapper {
@@ -35,7 +49,7 @@
   @extend %d-flex-column;
   @extend %d-flex-centered;
   @include before;
-  padding: 32px;
+  padding: 8px 32px 24px;
   flex-grow: 1;
   width: 100%;
   gap: 4px 0;
@@ -46,6 +60,11 @@
   letter-spacing: -2.4px;
   text-transform: uppercase;
   color: var(--color-grey);
+
+  &.section__aside_type_title {
+    grid-column-start: 1;
+    grid-column-start: 4;
+  }
 
   &:before {
     @include wh(100%);
