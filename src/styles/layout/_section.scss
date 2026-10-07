@@ -1,0 +1,57 @@
+@use "../utils/helpers" as *;
+
+.section {
+  @include py(32px);
+  height: 100vh;
+  gap: 0 32px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "wrapper aside";
+}
+
+.section__wrapper {
+  @extend %d-flex-column;
+  @extend %d-flex-centered;
+  grid-area: wrapper;
+}
+
+.section__aside {
+  @extend %d-flex-column;
+  @extend %d-flex-centered;
+  @include before;
+  font-size: var(--font-size-xxl);
+  grid-area: aside;
+
+  &:before {
+    @include wh(100%);
+    @include pos(8px,-12px);
+    @include border(4px,var(--color-light-blue));
+    z-index: 1;
+  }
+}
+
+.section__title {
+  @extend %d-flex-column;
+  @extend %d-flex-centered;
+  @include before;
+  padding: 32px;
+  flex-grow: 1;
+  width: 100%;
+  gap: 4px 0;
+  z-index: 1;
+  font-size: 1.1em;
+  font-weight: var(--fw-bold);
+  font-family: var(--font-family-title);
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+  color: var(--color-grey);
+
+  &:before {
+    @include wh(100%);
+    @include pos(-12px,8px);
+    @include border(4px,var(--color-light-blue));
+    background-color: var(--color-white);
+    z-index: -1;
+  }
+}
