@@ -1,5 +1,8 @@
 // @ts-ignore
+import { initNavHandler } from './modules/nav';
 import Twig, { Template } from 'twig';
+import Caption from './modules/caption';
+import Section from './modules/section';
 //import { handleCarousel, initSlides, slidesConfig } from './modules/slides';
 //import { initGallery } from './modules/gallery';
 
@@ -26,7 +29,10 @@ const fetchTemplate = async (): Promise<Template | undefined> => {
 }
 
 const initApp = () => {
-  console.log('init app');
+  new Caption({ sel: '.js-title' });
+  new Section({ sel: '.js-section' });
+
+  initNavHandler('.js-nav-link');
 };
 
 const renderData = async () => {

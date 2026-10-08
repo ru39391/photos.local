@@ -2,9 +2,12 @@
 
 .card {
   @include before;
-  overflow: hidden;
   cursor: pointer;
+  overflow: hidden;
   color: var(--color-white);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity .5s ease .1s, transform .5s ease .2s;
 
   &:before {
     @include pos(0);
@@ -27,6 +30,13 @@
       opacity: 1;
       transform: translateX(0);
     }
+  }
+}
+
+.is-visible {
+  .card {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

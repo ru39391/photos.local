@@ -2,6 +2,7 @@
 
 .promo {
   flex-grow: 1;
+  overflow: hidden;
   display: grid;
   gap: 0 64px;
   grid-template-columns: min-content minmax(min-content, 1fr);
@@ -21,6 +22,7 @@
   @extend %d-flex-column;
   justify-content: space-between;
   gap: 32px 0;
+  margin: 0 -32px 0 0;
   padding: 32px 0 0;
   grid-area: wrapper;
 }
@@ -32,19 +34,40 @@
   text-transform: uppercase;
   text-shadow: 10px 0 rgba(0,0,0,.125);
   margin: -16px 0 0;
+
+  &.promo__title_type_hidden {
+    visibility: hidden;
+  }
 }
 
 .promo__subtitle {
   @extend %d-flex-column;
   @include fs-lh(var(--font-size-lg),var(--line-height-md));
   text-transform: uppercase;
+  animation: down 1.5s;
 }
 
 .promo__bg {
-  margin: 0 -32px 0 0;
   padding: 32px 0 0;
+  animation: up 1.5s;
 }
 
-.promo__bg-pic {
+@keyframes down {
+  0% {
+    transform: translateY(-100%);
+  }
 
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes up {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }

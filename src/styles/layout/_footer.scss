@@ -1,0 +1,12 @@
+@use "../utils/helpers" as *;
+
+.footer {
+  @extend %d-flex-column;
+  @extend %d-flex-centered;
+  @include py(56px, 32px);
+  gap: 32px 0;
+}
+
+.footer__copyright {
+  font-size: var(--font-size-xs);
+}

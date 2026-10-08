@@ -6,6 +6,7 @@
   flex-grow: 1;
   align-items: flex-start;
   justify-content: center;
+  animation: left 2.5s;
 }
 
 .nav__link {
@@ -18,18 +19,19 @@
 
   &:hover {
     color: var(--color-dark);
+
+    .nav__link-caption {
+      &:before {
+        width: 100%;
+      }
+    }
   }
 }
 
 .nav__link-caption {
   @include before;
+  pointer-events: none;
   letter-spacing: -1.4px;
-
-  &:hover {
-    &:before {
-      width: 100%;
-    }
-  }
 
   &:before {
     @include wh(0,4px);
@@ -37,5 +39,15 @@
     margin: 8px 0 0;
     transition: all .3s ease .3s;
     background-color: var(--color-dark);
+  }
+}
+
+@keyframes left {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }

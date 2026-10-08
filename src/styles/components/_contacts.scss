@@ -1,0 +1,11 @@
+@use "../utils/helpers" as *;
+
+.contacts {
+  @extend %d-flex-column;
+  @extend %d-flex-ai-center;
+  gap: 16px 0;
+}
+
+.contacts__link {
+  font-size: var(--font-size-lg);
+}
