@@ -23,11 +23,14 @@ body {
 }
 
 .container {
-  @include px(16px);
   @include mx(auto);
   width: 100%;
 
   @media #{$breakpoint-up-sm} {
+    @include px(16px);
+  }
+
+  @media #{$breakpoint-up-md} {
     @include px(32px);
   }
 }

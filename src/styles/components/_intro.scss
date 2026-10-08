@@ -2,5 +2,6 @@
 
 .intro {
   @extend %d-flex-column;
+  position: relative;
   height: 100vh;
 }

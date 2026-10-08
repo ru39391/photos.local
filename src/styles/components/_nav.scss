@@ -2,23 +2,36 @@
 
 .nav {
   @extend %d-flex-column;
-  gap: 32px 0;
+  gap: 8px 0;
   flex-grow: 1;
   align-items: flex-start;
-  justify-content: center;
-  animation: left 2.5s;
+  justify-content: flex-end;
+  animation: left 2.2s;
+
+  @media #{$breakpoint-up-md} {
+    order: 2;
+    gap: 32px 0;
+    justify-content: center;
+  }
 }
 
 .nav__link {
   @extend %d-flex-ai-center;
   gap: 0 16px;
   padding: 0 0 8px;
-  font-size: .8em;
-  color: var(--color-grey);
+  font-size: .46em;
+  color: var(--color-white);
   transition: all .3s ease;
 
+  @media #{$breakpoint-up-md} {
+    font-size: .8em;
+    color: var(--color-grey);
+  }
+
   &:hover {
-    color: var(--color-dark);
+    @media #{$breakpoint-up-md} {
+      color: var(--color-dark);
+    }
 
     .nav__link-caption {
       &:before {

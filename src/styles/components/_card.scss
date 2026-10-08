@@ -3,11 +3,17 @@
 .card {
   @include before;
   cursor: pointer;
+  height: 100%;
   overflow: hidden;
   color: var(--color-white);
+  font-family: var(--font-family-secondary);
   opacity: 0;
   transform: translateX(-100%);
   transition: opacity .5s ease .1s, transform .5s ease .2s;
+
+  @media #{$breakpoint-up-md} {
+    height: auto;
+  }
 
   &:before {
     @include pos(0);
@@ -41,46 +47,81 @@
 }
 
 .card__pic {
+  height: 100%;
   z-index: 2;
   transition: all .3s ease .1s;
+
+  @media #{$breakpoint-up-md} {
+    height: auto;
+  }
 }
 
 .card__bg {
   @include pos(0);
   @include wh(100%);
   z-index: 2;
-  background-size: 100% auto;
+  background-size: cover;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-color: var(--color-transp);
+  box-shadow: 0 0 110px 0 rgba(0,0,0,.75) inset;
   transition: all .5s ease;
+
+  @media #{$breakpoint-up-md} {
+    box-shadow: none;
+    background-size: 100% auto;
+  }
+}
+
+.card__wrapper {
+  &.card__wrapper_hidden {
+    display: block;
+
+    @media #{$breakpoint-up-md} {
+      display: none;
+    }
+
+    & + .card__wrapper {
+      display: none;
+
+      @media #{$breakpoint-up-md} {
+        display: block;
+      }
+    }
+  }
 }
 
 .card__header {
   @extend %d-flex-ai-center;
   @include pos(0,0);
   gap: 0 8px;
-  padding: 24px;
+  padding: 16px;
   z-index: 3;
   font-size: var(--font-size-lg);
-  font-family: var(--font-family-secondary);
   text-transform: lowercase;
-  transform: translateX(-100%);
-  opacity: 0;
   transition: opacity .3s ease, transform .3s ease .1s;
+
+  @media #{$breakpoint-up-md} {
+    padding: 24px;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
 }
 
 .card__footer {
-  padding: 16px 24px;
   position: absolute;
   bottom: 0;
   right: 0;
   z-index: 3;
+  padding: 12px 16px;
   font-size: var(--font-size-xl);
   font-weight: var(--fw-semibold);
-  font-family: var(--font-family-secondary);
   text-transform: uppercase;
-  transform: translateX(100%);
-  opacity: 0;
   transition: opacity .3s ease, transform .3s ease .1s;
+
+  @media #{$breakpoint-up-md} {
+    padding: 16px 24px;
+    opacity: 0;
+    transform: translateX(100%);
+  }
 }

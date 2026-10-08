@@ -2,7 +2,11 @@
 
 .header {
   @extend %d-flex-ai-center;
-  @include py(32px);
   width: 100%;
+  padding: 16px;
   justify-content: space-between;
+
+  @media #{$breakpoint-up-md} {
+    @include py(32px);
+  }
 }

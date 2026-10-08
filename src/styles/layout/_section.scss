@@ -1,10 +1,12 @@
 @use "../utils/helpers" as *;
 
 .section {
-  @include py(32px);
-  min-height: 100vh;
-  gap: 32px;
-  display: grid;
+  @media #{$breakpoint-up-md} {
+    @include py(32px);
+    min-height: 100vh;
+    display: grid;
+    gap: 32px;
+  }
 
   &.section_type_row {
     grid-template-columns: 2fr 1fr;
@@ -47,24 +49,40 @@
 }
 
 .section__col {
+  height: 100vh;
   overflow: hidden;
+
+  @media #{$breakpoint-up-md} {
+    height: auto;
+  }
 }
 
 .section__wrapper {
   @extend %d-flex-column;
   @extend %d-flex-centered;
-  grid-area: wrapper;
+  height: 100vh;
   overflow: hidden;
+
+  @media #{$breakpoint-up-md} {
+    height: auto;
+    grid-area: wrapper;
+  }
 }
 
 .section__aside {
-  @extend %d-flex-column;
-  @extend %d-flex-centered;
   @include before;
+  display: none;
   font-size: var(--font-size-xxl);
-  grid-area: aside;
   transform: scale3d(0,0,1);
   transition: all .5s ease .1s;
+
+  @media #{$breakpoint-up-md} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    grid-area: aside;
+  }
 
   &.section__aside_type_title {
     grid-area: unset;
