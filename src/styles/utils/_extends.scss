@@ -31,7 +31,7 @@
   font-family: var(--font-family-title);
   font-weight: var(--fw-bold);
 
-  @media #{$breakpoint-up-md} {
+  @media #{$breakpoint-up-lg} {
     @include fs-lh(var(--font-size-xxl),var(--line-height-xl));
   }
 }

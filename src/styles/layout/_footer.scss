@@ -3,8 +3,12 @@
 .footer {
   @extend %d-flex-column;
   @extend %d-flex-centered;
-  @include py(56px, 32px);
+  @include py(32px);
   gap: 32px 0;
+
+  @media #{$breakpoint-up-lg} {
+    padding-top: 56px;
+  }
 }
 
 .footer__copyright {

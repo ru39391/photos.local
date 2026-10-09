@@ -11,7 +11,7 @@
   transform: translateX(-100%);
   transition: opacity .5s ease .1s, transform .5s ease .2s;
 
-  @media #{$breakpoint-up-md} {
+  @media #{$breakpoint-up-sm} {
     height: auto;
   }
 
@@ -40,9 +40,18 @@
 }
 
 .is-visible {
+  & > .card {
+    @media #{$breakpoint-down-md} {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   .card {
-    opacity: 1;
-    transform: translateX(0);
+    @media #{$breakpoint-up-md} {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }
 
@@ -51,7 +60,7 @@
   z-index: 2;
   transition: all .3s ease .1s;
 
-  @media #{$breakpoint-up-md} {
+  @media #{$breakpoint-up-sm} {
     height: auto;
   }
 }
@@ -67,9 +76,12 @@
   box-shadow: 0 0 110px 0 rgba(0,0,0,.75) inset;
   transition: all .5s ease;
 
-  @media #{$breakpoint-up-md} {
-    box-shadow: none;
+  @media #{$breakpoint-up-sm} {
     background-size: 100% auto;
+  }
+
+  @media #{$breakpoint-up-lg} {
+    box-shadow: none;
   }
 }
 
@@ -77,14 +89,14 @@
   &.card__wrapper_hidden {
     display: block;
 
-    @media #{$breakpoint-up-md} {
+    @media #{$breakpoint-up-sm} {
       display: none;
     }
 
     & + .card__wrapper {
       display: none;
 
-      @media #{$breakpoint-up-md} {
+      @media #{$breakpoint-up-sm} {
         display: block;
       }
     }
@@ -101,7 +113,7 @@
   text-transform: lowercase;
   transition: opacity .3s ease, transform .3s ease .1s;
 
-  @media #{$breakpoint-up-md} {
+  @media #{$breakpoint-up-lg} {
     padding: 24px;
     opacity: 0;
     transform: translateX(-100%);

@@ -27,10 +27,6 @@ body {
   width: 100%;
 
   @media #{$breakpoint-up-sm} {
-    @include px(16px);
-  }
-
-  @media #{$breakpoint-up-md} {
     @include px(32px);
   }
 }
@@ -71,7 +67,7 @@ body {
 .overflow-hidden {
   overflow: hidden;
 
-  @media #{$breakpoint-up-sm} {
+  @media #{$breakpoint-up-md} {
     overflow: auto;
   }
 }

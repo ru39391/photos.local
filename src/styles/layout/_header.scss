@@ -6,7 +6,7 @@
   padding: 16px;
   justify-content: space-between;
 
-  @media #{$breakpoint-up-md} {
+  @media #{$breakpoint-up-lg} {
     @include py(32px);
   }
 }

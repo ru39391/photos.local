@@ -1,11 +1,16 @@
 @use "../utils/helpers" as *;
 
 .section {
-  @media #{$breakpoint-up-md} {
+  @extend %d-flex-column;
+
+  @media #{$breakpoint-up-sm} {
     @include py(32px);
     min-height: 100vh;
-    display: grid;
     gap: 32px;
+  }
+
+  @media #{$breakpoint-up-lg} {
+    display: grid;
   }
 
   &.section_type_row {
@@ -22,13 +27,31 @@
 
   &.section_type_cols {
     grid-template-columns: repeat(3,1fr);
+
+    @media #{$breakpoint-up-md} {
+      display: grid;
+      align-items: flex-start;
+    }
   }
 
   &.section_type_grid {
-    grid-template-areas:
-      "aside title top"
-      "aside title top"
-      "bottom bottom top";
+    @media #{$breakpoint-up-md} {
+      display: grid;
+      align-items: inherit;
+      grid-template-columns: repeat(2,1fr);
+      grid-template-areas:
+        "title top"
+        "aside top"
+        "bottom top";
+    }
+
+    @media #{$breakpoint-up-lg} {
+      grid-template-columns: repeat(3,1fr);
+      grid-template-areas:
+        "aside title top"
+        "aside title top"
+        "bottom bottom top";
+    }
 
     .section__aside {
       grid-area: title;
@@ -52,7 +75,7 @@
   height: 100vh;
   overflow: hidden;
 
-  @media #{$breakpoint-up-md} {
+  @media #{$breakpoint-up-sm} {
     height: auto;
   }
 }
@@ -63,8 +86,12 @@
   height: 100vh;
   overflow: hidden;
 
-  @media #{$breakpoint-up-md} {
+  @media #{$breakpoint-up-sm} {
     height: auto;
+    flex-grow: 1;
+  }
+
+  @media #{$breakpoint-up-lg} {
     grid-area: wrapper;
   }
 }
@@ -76,7 +103,7 @@
   transform: scale3d(0,0,1);
   transition: all .5s ease .1s;
 
-  @media #{$breakpoint-up-md} {
+  @media #{$breakpoint-up-sm} {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,12 +140,15 @@
   width: 100%;
   gap: 4px 0;
   z-index: 1;
-  font-size: 1.1em;
   font-weight: var(--fw-bold);
   font-family: var(--font-family-title);
   letter-spacing: -2.4px;
   text-transform: uppercase;
   color: var(--color-grey);
+
+  @media #{$breakpoint-up-lg} {
+    font-size: 1.1em;
+  }
 
   &:before {
     @include wh(100%);
