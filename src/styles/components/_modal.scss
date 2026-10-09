@@ -1,0 +1,129 @@
+@use "../utils/helpers" as *;
+
+.modal-overlay {
+  @include wh(100%,100vh);
+  @include pos(0, 0, fixed);
+  overflow: auto;
+  display: none;
+  z-index: 1060;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+
+  &.is-visible {
+    display: block;
+    animation: show 0.5s;
+
+    .modal {
+      &:before {
+        background-color: rgba(0, 0, 0, .75);
+      }
+    }
+  }
+}
+
+.modal {
+  @include before;
+  @include pos(0);
+  @include wh(100%);
+  padding: 16px;
+
+  &:before {
+    @include wh(100%);
+    @include pos(0);
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.3s ease 0.5s;
+    background-color: var(--color-transp);
+  }
+
+  &.modal_type_plain {
+    @extend %d-flex-column;
+    @extend %d-flex-centered;
+    min-height: 100vh;
+
+    .modal-wrapper {
+      @extend %d-flex-column;
+      max-width: 436px;
+      gap: 8px 0;
+      align-items: flex-end;
+    }
+
+    .modal-content {
+      padding: 0;
+    }
+
+    .modal-container {
+      background-color: var(--color-transp);
+    }
+  }
+}
+
+.modal-wrapper {
+  @include zi(2);
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal-container {
+  @include mx(auto);
+  width: 100%;
+  max-width: 720px;
+}
+
+.modal-header {
+  @extend %d-flex-column;
+  @include pos(0);
+  @include wh(100%, 80px);
+  padding: 0 16px;
+  border-radius: 24px 24px 0 0;
+}
+
+.modal-header__container {
+  @extend %d-flex-column;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.modal-content {
+  @include zi(1);
+  height: 100%;
+  flex-grow: 1;
+  align-self: stretch;
+
+  .modal-container {
+    @include zi(2);
+  }
+}
+
+.modal-footer {
+  padding: 24px 16px 40px;
+  border-radius: 0 0 24px 24px;
+}
+
+.modal-close {
+  @extend %d-flex-column;
+  @extend %d-flex-centered;
+  @include fs-lh(var(--font-size-xxl),var(--line-height-body));
+  @include zi(2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  height: 32px;
+  padding: 1px;
+  color: var(--color-white);
+  background-color: var(--color-transp);
+  cursor: pointer;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

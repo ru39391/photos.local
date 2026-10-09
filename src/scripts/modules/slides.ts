@@ -1,5 +1,8 @@
 import Swiper from "swiper";
+import Utils from "../utils";
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+
+const galleryPath = 'src/assets/gallery/';
 
 export const handleSlider = (sel: string): Swiper => new Swiper(sel, {
   modules: [Autoplay, Navigation],
@@ -32,7 +35,7 @@ export const handleCarousel = (sel: string): Swiper => new Swiper(sel, {
   },
 });
 
-export const initSlides = ({ sliderSel, carouselSel }: Record<string, string>) => {
+export const handleSlides = ({ sliderSel, carouselSel }: Record<string, string>) => {
   const sliderItems = Array.from(document.querySelectorAll(sliderSel));
   const carouselItems = Array.from(document.querySelectorAll(carouselSel));
 
@@ -43,6 +46,46 @@ export const initSlides = ({ sliderSel, carouselSel }: Record<string, string>) =
     carousel,
     slider
   };
+};
+
+
+const renderSlides = ({ folder, pics }: Record<'folder' | 'pics', string>) => {
+  const pictures = JSON.parse(pics).map(name => `${galleryPath}${folder}/img_${name}.jpg`);
+  const slides = pictures.map(pic => {
+    const img = document.createElement('img');
+    const slide = document.createElement('div');
+
+    img.alt = '';
+    img.src = pic;
+    img.classList.add('swiper-img');
+
+    slide.classList.add('swiper-slide');
+    slide.append(img);
+
+    return slide;
+  });
+
+  return slides;
+}
+
+export const initSlides = async ({ folder, pics, overlay }: Record<'folder' | 'pics', string> & { overlay: HTMLElement }) => {
+  try {
+    const tpl = await Utils.fetchTemplateData('swiper-slides');
+    const wrapper = Utils.parseData<string>({
+      data: '',
+      tpl: tpl as Template,
+      rowSel: '.js-slides'
+    });
+    const slides = renderSlides({ folder, pics });
+    const container = wrapper.querySelector('.js-slides-wrapper');
+
+    slides.forEach(slide => container.append(slide));
+    overlay.append(wrapper);
+
+    handleSlider('.js-slides');
+  } catch(err) {
+    console.error(err);
+  }
 };
 
 export const slidesConfig = {

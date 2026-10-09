@@ -72,11 +72,18 @@
 }
 
 .section__col {
+  @extend %d-flex-column;
+  @extend %d-flex-centered;
+  display: block;
   height: 100vh;
   overflow: hidden;
 
   @media #{$breakpoint-up-sm} {
     height: auto;
+  }
+
+  @media #{$breakpoint-up-md} {
+    display: flex;
   }
 }
 

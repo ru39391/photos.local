@@ -1,0 +1,11 @@
+@use "../utils/helpers" as *;
+
+.swiper-slide {
+  @extend %d-flex-column;
+  @extend %d-flex-centered;
+}
+
+.swiper-img {
+  height: 100%;
+  object-fit: contain;
+}

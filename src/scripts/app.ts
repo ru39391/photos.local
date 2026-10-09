@@ -2,9 +2,9 @@
 import { initNavHandler } from './modules/nav';
 import Twig, { Template } from 'twig';
 import Caption from './modules/caption';
+import Modal from './modules/modal';
 import Section from './modules/section';
-//import { handleCarousel, initSlides, slidesConfig } from './modules/slides';
-//import { initGallery } from './modules/gallery';
+import { initSlides } from './modules/slides';
 
 const parseData = (tpl: Template): Node[] => {
   const parser = new DOMParser();
@@ -30,6 +30,21 @@ const fetchTemplate = async (): Promise<Template | undefined> => {
 
 const initApp = () => {
   new Caption({ sel: '.js-title' });
+  new Modal({
+    btnSel: '.js-modal-btn',
+    overlayClass: 'popup-overlay',
+    titleSel: null,
+    inputSel: null,
+    handleOpen: ({ target, overlay }) => {
+      const { folder, pics } = target.dataset;
+
+      initSlides({
+        folder,
+        pics,
+        overlay: overlay.querySelector('.js-modal-content')
+      });
+    }
+  });
   new Section({ sel: '.js-section' });
 
   initNavHandler('.js-nav-link');

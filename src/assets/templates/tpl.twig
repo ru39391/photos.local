@@ -46,14 +46,22 @@
   </div>
   <div class="section__wrapper js-section">
     <div class="card">
-      <div class="card__header">Ещё фото <img src="src/assets/icons/arrow-narrow-up-right.svg" alt="" /></div>
+      <div
+        class="card__header js-modal-btn"
+        data-target="carousel"
+        data-folder="budoir"
+        data-pics="[5643,5646,5661,5666,5672,5690,5698,5706,5725,5736]"
+      >
+        Ещё фото
+        <img src="src/assets/icons/arrow-narrow-up-right.svg" alt="" />
+      </div>
       <div class="card__wrapper card__wrapper_hidden">
-        <img class="card__pic" src="https://sun9-40.vkuserphoto.ru/s/v1/ig2/CbOEZwCbYmXzzDv4jVPm0KKZSwuSoWSALH4Yi6kRDMNIuotPCTxOSvv18PEMx8VNtSMaoyHQFdHHYv0PChnf2kuz.jpg?quality=95&as=32x48,48x72,72x108,108x162,160x240,240x360,360x540,480x720,540x810,640x960,720x1080,1080x1620,1280x1920&from=bu&cs=1280x0" alt="" />
-        <div class="card__bg" style="background-image:url(https://sun9-40.vkuserphoto.ru/s/v1/ig2/CbOEZwCbYmXzzDv4jVPm0KKZSwuSoWSALH4Yi6kRDMNIuotPCTxOSvv18PEMx8VNtSMaoyHQFdHHYv0PChnf2kuz.jpg?quality=95&as=32x48,48x72,72x108,108x162,160x240,240x360,360x540,480x720,540x810,640x960,720x1080,1080x1620,1280x1920&from=bu&cs=1280x0)"></div>
+        <img class="card__pic" src="src/assets/gallery/budoir/img_5661.jpg" alt="" />
+        <div class="card__bg" style="background-image:url(src/assets/gallery/budoir/img_5661.jpg)"></div>
       </div>
       <div class="card__wrapper">
-        <img class="card__pic" src="https://sun9-61.vkuserphoto.ru/s/v1/ig2/sMFXflxWd_pJQd5CJOwSyLpPczLwkJHpjYSyBV79i-XcYaWyTiT6bLIM6cPrCHp-Zx9zg8UcUCbXmrcbQ5to-G4Wc9UUoA.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,1920x1280&from=bu&cs=1920x0" alt="" />
-        <div class="card__bg" style="background-image:url(https://sun9-61.vkuserphoto.ru/s/v1/ig2/sMFXflxWd_pJQd5CJOwSyLpPczLwkJHpjYSyBV79i-XcYaWyTiT6bLIM6cPrCHp-Zx9zg8UcUCbXmrcbQ5to-G4Wc9UUoA.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,1920x1280&from=bu&cs=1920x0)"></div>
+        <img class="card__pic" src="src/assets/gallery/budoir/img_5736.jpg" alt="" />
+        <div class="card__bg" style="background-image:url(src/assets/gallery/budoir/img_5736.jpg)"></div>
       </div>
       <div class="card__footer">Сентябрь 2026</div>
     </div>
@@ -160,3 +168,12 @@
     &copy; 2026 <a class="td-underline" href="https://github.com/ru39391" target="_blank">Разработка сайта</a>
   </div>
 </footer>
+
+<div id="carousel" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-wrapper">
+      <button class="modal-close js-modal-close" type="button">&times;</button>
+      <div class="modal-content js-modal-content"></div>
+    </div>
+  </div>
+</div>
