@@ -3,10 +3,10 @@ import { STATE_MOD, TPL_URL } from '../utils';
 
 export type TModalOptions = {
   btnSel?: string;
-  modalBtns?: T[];
+  modalBtns?: HTMLElement[];
   overlayClass: string;
-  titleSel: string;
-  inputSel: string;
+  titleSel?: string | null;
+  inputSel?: string | null;
   handleOpen: ((data: Record<'target' | 'overlay', HTMLElement>) => void) | null;
   handleClose: ((data: Record<'overlay', HTMLElement>) => void) | null;
 };
@@ -48,8 +48,8 @@ class Modal {
 
     if(btnSel) this.btnSel = btnSel;
 
-    this.titleSel = titleSel;
-    this.inputSel = inputSel;
+    this.titleSel = String(titleSel);
+    this.inputSel = String(inputSel);
     this.overlayClass = overlayClass;
     this.modalBtns = modalBtns || Array.from(document.querySelectorAll(this.btnSel));
 
@@ -156,7 +156,7 @@ class Modal {
       return;
     }
 
-    const btn = item.querySelector(this.btnSel);
+    //const btn = item.querySelector(this.btnSel);
 
     this.modalOverlay = document.createElement('div');
 
@@ -221,12 +221,11 @@ class Modal {
 
     const target = event.target as HTMLElement;
     const { dataset } = target;
-    const { res, title } = dataset;
 
     this.isModalPlain = false;
 
     if(dataset.target) {
-      this.openModal(dataset.target, title as string, target);
+      this.openModal(dataset.target, dataset.title as string, target);
     }
   }
 

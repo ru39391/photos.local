@@ -1,4 +1,5 @@
 import Swiper from "swiper";
+import Twig from 'twig';
 import Utils from "../utils";
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
@@ -49,9 +50,11 @@ export const handleSlides = ({ sliderSel, carouselSel }: Record<string, string>)
 };
 
 
-const renderSlides = ({ folder, pics }: Record<'folder' | 'pics', string>) => {
-  const pictures = JSON.parse(pics).map(name => `${galleryPath}${folder}/img_${name}.jpg`);
-  const slides = pictures.map(pic => {
+const renderSlides = ({ folder, pics }: Record<'folder' | 'pics', string>): HTMLElement[] => {
+  if(!pics) return [];
+
+  const pictures: string[] = JSON.parse(pics).map((name: string) => `${galleryPath}${folder}/img_${name}.jpg`);
+  const slides = pictures.map((pic: string) => {
     const img = document.createElement('img');
     const slide = document.createElement('div');
 
@@ -73,13 +76,15 @@ export const initSlides = async ({ folder, pics, overlay }: Record<'folder' | 'p
     const tpl = await Utils.fetchTemplateData('swiper-slides');
     const wrapper = Utils.parseData<string>({
       data: '',
-      tpl: tpl as Template,
+      tpl: tpl as Twig.Template,
       rowSel: '.js-slides'
     });
     const slides = renderSlides({ folder, pics });
     const container = wrapper.querySelector('.js-slides-wrapper');
 
-    slides.forEach(slide => container.append(slide));
+    if(!container) return;
+
+    slides.forEach((slide: HTMLElement) => container.append(slide));
     overlay.append(wrapper);
 
     handleSlider('.js-slides');

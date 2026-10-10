@@ -1,12 +1,12 @@
 // @ts-ignore
 import { initNavHandler } from './modules/nav';
-import Twig, { Template } from 'twig';
+import Twig from 'twig';
 import Caption from './modules/caption';
 import Modal from './modules/modal';
 import Section from './modules/section';
 import { initSlides } from './modules/slides';
 
-const parseData = (tpl: Template): Node[] => {
+const parseData = (tpl: Twig.Template): Node[] => {
   const parser = new DOMParser();
 
   const { body } = parser.parseFromString(
@@ -17,7 +17,7 @@ const parseData = (tpl: Template): Node[] => {
   return Array.from(body.children);
 }
 
-const fetchTemplate = async (): Promise<Template | undefined> => {
+const fetchTemplate = async (): Promise<Twig.Template | undefined> => {
   try {
     const res = await fetch('src/assets/templates/tpl.twig');
     const data = await res.text();
@@ -39,9 +39,9 @@ const initApp = () => {
       const { folder, pics } = target.dataset;
 
       initSlides({
-        folder,
-        pics,
-        overlay: overlay.querySelector('.js-modal-content')
+        folder: String(folder),
+        pics: String(pics),
+        overlay: overlay.querySelector('.js-modal-content') as HTMLElement
       });
     },
     handleClose: ({ overlay }) => {
@@ -63,7 +63,7 @@ const renderData = async () => {
 
   try {
     const tpl = await fetchTemplate();
-    const arr = parseData(tpl as Template);
+    const arr = parseData(tpl as Twig.Template);
 
     arr.forEach(item => wrapper?.append(item));
     initApp();

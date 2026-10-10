@@ -33,7 +33,7 @@ class Utils {
     const parser = new DOMParser();
     const { body } = parser.parseFromString(tpl.render(data), 'text/html');
 
-    return body.querySelector(rowSel);
+    return body.querySelector(rowSel) as HTMLElement;
   }
 
   static phoneMask() {
