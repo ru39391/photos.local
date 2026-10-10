@@ -1,13 +1,14 @@
 import Twig, { type Template } from 'twig';
 import { STATE_MOD, TPL_URL } from '../utils';
 
-export type TModalOptions<T> = {
+export type TModalOptions = {
   btnSel?: string;
   modalBtns?: T[];
   overlayClass: string;
   titleSel: string;
   inputSel: string;
-  handleOpen: ((data: T) => void) | null;
+  handleOpen: ((data: Record<'target' | 'overlay', HTMLElement>) => void) | null;
+  handleClose: ((data: Record<'overlay', HTMLElement>) => void) | null;
 };
 
 export type TTemplateData = {
@@ -29,13 +30,14 @@ class Modal {
   modalBtns: HTMLElement[] = [];
   popups: HTMLElement[] = [];
   isModalPlain: boolean = false;
-  handleOpen: ((item: HTMLElement) => void) | null = null;
+  handleOpen: (({ target, overlay }: Record<'target' | 'overlay', HTMLElement>) => void) | null = null;
+  handleClose: (({ overlay }: Record<'overlay', HTMLElement>) => void) | null = null;
 
-  constructor(options: TModalOptions<Record<'target' | 'overlay', HTMLElement>>) {
+  constructor(options: TModalOptions) {
     this.init(options);
   }
 
-  init(options: TModalOptions<Record<'target' | 'overlay', HTMLElement>>) {
+  init(options: TModalOptions) {
     const {
       btnSel,
       modalBtns,
@@ -54,6 +56,7 @@ class Modal {
     this.revealModals();
 
     if (options.handleOpen) this.handleOpen = options.handleOpen;
+    if (options.handleClose) this.handleClose = options.handleClose;
 
     if (!this.modalBtns.length) {
       return;
@@ -141,6 +144,10 @@ class Modal {
 
     if(target.parentElement === currentTarget || target === this.btnClose) {
       this.hideModal(currentTarget);
+
+      if(this.handleClose) {
+        this.handleClose({ overlay: this.modalOverlay as HTMLElement });
+      }
     }
   }
 

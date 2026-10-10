@@ -43,6 +43,14 @@ const initApp = () => {
         pics,
         overlay: overlay.querySelector('.js-modal-content')
       });
+    },
+    handleClose: ({ overlay }) => {
+      let slider = overlay.querySelector('.js-slides');
+
+      if(!slider) return;
+
+      slider.remove();
+      slider = null;
     }
   });
   new Section({ sel: '.js-section' });
